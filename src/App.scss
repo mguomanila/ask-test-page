@@ -1,5 +1,5 @@
 .App {
-    margin: 1rem;
+  margin: 1rem;
 }
 
 .App-logo {
@@ -14,19 +14,17 @@
 }
 
 .App-header {
-    & > p:first-child {
-        font-weight: bold;
-    }
-}
-
-.App-header
-
-.App-header > p:nth-child(2) {
+  & > p:first-child {
+    font-weight: bold;
+  }
+  & > p:nth-child(2) {
     font-size: x-small;
+  }
 }
 
 .main {
-    display: flex;
+  display: flex;
+
 }
 
 .App-link {
