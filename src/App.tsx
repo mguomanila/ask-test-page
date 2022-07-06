@@ -2,6 +2,8 @@ import React from 'react'
 import { Card,  } from 'antd'
 import { QrcodeOutlined, } from '@ant-design/icons'
 import Address from './components/Address'
+import WalletHistory from './components/History'
+import { ajax } from './helpers/utils'
 import './App.scss'
 
 const styles = {
@@ -32,18 +34,11 @@ function App() {
 
   async function addressHandler(_e: any) {
     setAddress(input.current.value)
-    const url = `${process.env.API_URL}/${input.current.value}/balance?chain=eth`
-    console.log(`url:${url}`)
-    const resp = await fetch(
-      url,
-      {
-        headers: {
-          accept: 'application/json',
-          'X-API-Key': process.env.X_API_KEY
-        }
-      }
-    )
-    const json = await resp.json()
+    const json = await ajax('api', {
+      get_param: 'balance?chain=eth',
+      method: 'GET',
+      wallet: input.current.value,
+    })
     console.log(json)
     setTotalBalance((json as any).balance)
   }
@@ -91,6 +86,7 @@ function App() {
           <QrcodeOutlined />
         </div>
       </Card>
+      <WalletHistory wallet={address}/>
     </div>
   )
 }
