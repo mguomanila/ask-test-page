@@ -14,19 +14,8 @@
 }
 
 .App-header {
-  & > p:first-child {
-    font-weight: bold;
-  }
-  & > p:nth-child(2) {
-    font-size: x-small;
-  }
-}
-
-.main {
+  width: 100%;
   display: flex;
-  & > * {
-    flex: 1 2 auto;
-  }
 }
 
 .App-link {
@@ -44,4 +33,17 @@
 
 button {
   font-size: calc(10px + 2vmin);
+}
+
+.QR-code > div {
+  display: flex;
+  & > div {
+    flex: auto;
+  }
+  & > div:nth-child(2) {
+    width: 3rem;
+  }
+  svg {
+    height: 10rem;
+  }
 }
