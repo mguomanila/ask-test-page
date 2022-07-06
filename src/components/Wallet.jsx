@@ -1,6 +1,5 @@
-import { useEffect, useEffect } from "react"
+import { useState, useEffect } from "react"
 import { getEllipsisTxt } from "../helpers/formatters"
-import Blockie from "./Blockie"
 import "./identicon.css"
 import { useMoralis } from "react-moralis"
 import { Skeleton } from "antd"
@@ -57,9 +56,7 @@ function Address(props) {
 
   return (
     <div style={{ ...styles.address, ...props.style }}>
-      {props.avatar === "left" && <Blockie address={address} size={7} />}
       <p>{props.size ? getEllipsisTxt(address, props.size) : address}</p>
-      {props.avatar === "right" && <Blockie address={address} size={7} />}
       {props.copyable && (isClicked ? <Check /> : <Copy />)}
     </div>
   )
