@@ -1,11 +1,13 @@
 import React from 'react'
-import { useMoralis } from 'react-moralis'
+import { useMoralis, useNFTBalances } from 'react-moralis'
+import { Card, Skeleton } from 'antd'
 import './App.scss'
 
-function App() {
-  const { authenticate, isAuthenticated, isAuthenticating, user, account, logout } = useMoralis
-  const [totalBalance, setTotalBalance] = React.useState(0)
+const { Meta } = Card
 
+function App() {
+  const { data: NFTBalances } = useNFTBalances();
+  const [totalBalance, setTotalBalance] = React.useState(0)
 
   return (
     <div className="App">
@@ -15,19 +17,18 @@ function App() {
           Track and manage your ASK holdings across all of the wallets that you use.
         </p>
       </div>
-      <section className="main">
-        <div>
-          <p>ASK</p>
-          <p>Total Balance:</p>
-          {totalBalance}
-        </div>
-        <form>
-          <p>Welcome to ASK Wallet Page.</p>
-          <p>Please enter a wallet address:</p>
-          <input name="Wallet"/>
-        </form>
-      </section>
-      <div></div>
+      <Card>
+        <p>ASK</p>
+        <p>Total Balance:</p>
+        {totalBalance}
+      </Card>
+      <Card>
+        <p>Welcome to ASK Wallet Page.</p>
+        <p>Please enter a wallet address:</p>
+        <input name="Wallet"/>
+      </Card>
+      <Skeleton>
+      </Skeleton>
     </div>
   );
 }
