@@ -24,7 +24,9 @@
 
 .main {
   display: flex;
-
+  & > * {
+    flex: 1 2 auto;
+  }
 }
 
 .App-link {
