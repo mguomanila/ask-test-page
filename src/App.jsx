@@ -1,8 +1,11 @@
 import React from 'react'
+import { useMoralis } from 'react-moralis'
 import './App.scss'
 
 function App() {
+  const { authenticate, isAuthenticated, isAuthenticating, user, account, logout } = useMoralis
   const [totalBalance, setTotalBalance] = React.useState(0)
+
 
   return (
     <div className="App">
